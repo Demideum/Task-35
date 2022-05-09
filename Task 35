@@ -1,0 +1,35 @@
+namespace Task_35
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            bool isWork = true;
+            int userAccount = 0;
+
+            Queue<int> purchaseAmount = new Queue<int>();
+            purchaseAmount.Enqueue(6541);
+            purchaseAmount.Enqueue(2543);
+            purchaseAmount.Enqueue(9543);
+            purchaseAmount.Enqueue(2155);
+            purchaseAmount.Enqueue(2336);
+
+            while (isWork)
+            {
+                if (purchaseAmount.Count > 0)
+                {
+                    Console.WriteLine($"В данный момент на счете: {userAccount} рублей.\nОбслуживание клиента...");
+                    userAccount += purchaseAmount.Dequeue();
+                    Console.WriteLine($"\nТекущее состояние счёта пользователя {userAccount}.рублей. \nДля продолжения нажмите любую клавишу.");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.WriteLine("Клиентов больше нет. Спасибо за работу!");
+                    isWork = false;
+                }
+            }
+        }
+    }
+}
